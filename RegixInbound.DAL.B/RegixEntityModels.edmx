@@ -1,0 +1,229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dbFormFillModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblAutoFillForms">
+          <Key>
+            <PropertyRef Name="IdAutoFill" />
+          </Key>
+          <Property Name="IdAutoFill" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SessionId" Type="nvarchar" MaxLength="50" />
+          <Property Name="PersonId" Type="nvarchar" MaxLength="50" />
+          <Property Name="FormId" Type="nvarchar" MaxLength="50" />
+          <Property Name="DateReg" Type="datetime" />
+          <Property Name="FilledFormPath" Type="nvarchar" MaxLength="100" />
+          <Property Name="DateFormFill" Type="datetime" />
+          <Property Name="SendetToPerson" Type="datetime" />
+          <Property Name="FormData" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tblFieldsDocToRegixFields">
+          <Key>
+            <PropertyRef Name="IdAutoFill" />
+          </Key>
+          <Property Name="IdAutoFill" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FormId" Type="nvarchar" MaxLength="255" />
+          <Property Name="FieldId" Type="nvarchar" MaxLength="255" />
+          <Property Name="RegixPADId" Type="nvarchar" MaxLength="255" />
+          <Property Name="RegixSpravkaId" Type="nvarchar" MaxLength="255" />
+          <Property Name="RegixSpravkaFieldId" Type="nvarchar" MaxLength="255" />
+          <Property Name="DateReg" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="RegixSpravkaFieldPrefix" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="tblRegixSpravkaInfo">
+          <Key>
+            <PropertyRef Name="idRegixSpravkaInfo" />
+          </Key>
+          <Property Name="idRegixSpravkaInfo" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RegixSpravkaId" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="RequestTemplate" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="FormId" Type="nvarchar" MaxLength="255" />
+          <Property Name="Operation" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'dbFormFill.dbo.pdfGenerationInfoView' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="pdfGenerationInfoView">
+          <Key>
+            <PropertyRef Name="IdAutoFill" />
+            <PropertyRef Name="idRegixSpravkaInfo" />
+            <PropertyRef Name="RegixSpravkaId" />
+            <PropertyRef Name="RequestTemplate" />
+          </Key>
+          <Property Name="PersonId" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdAutoFill" Type="int" Nullable="false" />
+          <Property Name="idRegixSpravkaInfo" Type="int" Nullable="false" />
+          <Property Name="RegixSpravkaId" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="RequestTemplate" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="FormId" Type="nvarchar" MaxLength="255" />
+          <Property Name="Operation" Type="nvarchar" MaxLength="255" />
+          <Property Name="t" Type="nvarchar" MaxLength="116" />
+        </EntityType>
+        <EntityContainer Name="dbFormFillModelStoreContainer">
+          <EntitySet Name="tblAutoFillForms" EntityType="Self.tblAutoFillForms" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblFieldsDocToRegixFields" EntityType="Self.tblFieldsDocToRegixFields" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRegixSpravkaInfo" EntityType="Self.tblRegixSpravkaInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="pdfGenerationInfoView" EntityType="Self.pdfGenerationInfoView" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [pdfGenerationInfoView].[PersonId] AS [PersonId], 
+    [pdfGenerationInfoView].[IdAutoFill] AS [IdAutoFill], 
+    [pdfGenerationInfoView].[idRegixSpravkaInfo] AS [idRegixSpravkaInfo], 
+    [pdfGenerationInfoView].[RegixSpravkaId] AS [RegixSpravkaId], 
+    [pdfGenerationInfoView].[RequestTemplate] AS [RequestTemplate], 
+    [pdfGenerationInfoView].[FormId] AS [FormId], 
+    [pdfGenerationInfoView].[Operation] AS [Operation], 
+    [pdfGenerationInfoView].[t] AS [t]
+    FROM [dbo].[pdfGenerationInfoView] AS [pdfGenerationInfoView]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbFormFillModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblAutoFillForms">
+          <Key>
+            <PropertyRef Name="IdAutoFill" />
+          </Key>
+          <Property Name="IdAutoFill" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SessionId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PersonId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FormId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateReg" Type="DateTime" Precision="3" />
+          <Property Name="FilledFormPath" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DateFormFill" Type="DateTime" Precision="3" />
+          <Property Name="SendetToPerson" Type="DateTime" Precision="3" />
+          <Property Name="FormData" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblFieldsDocToRegixFields">
+          <Key>
+            <PropertyRef Name="IdAutoFill" />
+          </Key>
+          <Property Name="IdAutoFill" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FormId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FieldId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RegixPADId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RegixSpravkaId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RegixSpravkaFieldId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DateReg" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="RegixSpravkaFieldPrefix" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="dbFormFillEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblAutoFillForms" EntityType="Self.tblAutoFillForms" />
+          <EntitySet Name="tblFieldsDocToRegixFields" EntityType="Self.tblFieldsDocToRegixFields" />
+          <EntitySet Name="tblRegixSpravkaInfo" EntityType="dbFormFillModel.tblRegixSpravkaInfo" />
+          <EntitySet Name="pdfGenerationInfoView" EntityType="dbFormFillModel.pdfGenerationInfoView" />
+        </EntityContainer>
+        <EntityType Name="tblRegixSpravkaInfo">
+          <Key>
+            <PropertyRef Name="idRegixSpravkaInfo" />
+          </Key>
+          <Property Name="idRegixSpravkaInfo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RegixSpravkaId" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RequestTemplate" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FormId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Operation" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="pdfGenerationInfoView">
+          <Key>
+            <PropertyRef Name="IdAutoFill" />
+            <PropertyRef Name="idRegixSpravkaInfo" />
+            <PropertyRef Name="RegixSpravkaId" />
+            <PropertyRef Name="RequestTemplate" />
+          </Key>
+          <Property Name="PersonId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IdAutoFill" Type="Int32" Nullable="false" />
+          <Property Name="idRegixSpravkaInfo" Type="Int32" Nullable="false" />
+          <Property Name="RegixSpravkaId" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="RequestTemplate" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FormId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Operation" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="t" Type="String" MaxLength="116" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbFormFillModelStoreContainer" CdmEntityContainer="dbFormFillEntities">
+          <EntitySetMapping Name="tblAutoFillForms">
+            <EntityTypeMapping TypeName="dbFormFillModel.tblAutoFillForms">
+              <MappingFragment StoreEntitySet="tblAutoFillForms">
+                <ScalarProperty Name="IdAutoFill" ColumnName="IdAutoFill" />
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+                <ScalarProperty Name="FormId" ColumnName="FormId" />
+                <ScalarProperty Name="DateReg" ColumnName="DateReg" />
+                <ScalarProperty Name="FilledFormPath" ColumnName="FilledFormPath" />
+                <ScalarProperty Name="DateFormFill" ColumnName="DateFormFill" />
+                <ScalarProperty Name="SendetToPerson" ColumnName="SendetToPerson" />
+                <ScalarProperty Name="FormData" ColumnName="FormData" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblFieldsDocToRegixFields">
+            <EntityTypeMapping TypeName="dbFormFillModel.tblFieldsDocToRegixFields">
+              <MappingFragment StoreEntitySet="tblFieldsDocToRegixFields">
+                <ScalarProperty Name="RegixSpravkaFieldPrefix" ColumnName="RegixSpravkaFieldPrefix" />
+                <ScalarProperty Name="IdAutoFill" ColumnName="IdAutoFill" />
+                <ScalarProperty Name="FormId" ColumnName="FormId" />
+                <ScalarProperty Name="FieldId" ColumnName="FieldId" />
+                <ScalarProperty Name="RegixPADId" ColumnName="RegixPADId" />
+                <ScalarProperty Name="RegixSpravkaId" ColumnName="RegixSpravkaId" />
+                <ScalarProperty Name="RegixSpravkaFieldId" ColumnName="RegixSpravkaFieldId" />
+                <ScalarProperty Name="DateReg" ColumnName="DateReg" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRegixSpravkaInfo">
+            <EntityTypeMapping TypeName="dbFormFillModel.tblRegixSpravkaInfo">
+              <MappingFragment StoreEntitySet="tblRegixSpravkaInfo">
+                <ScalarProperty Name="Operation" ColumnName="Operation" />
+                <ScalarProperty Name="FormId" ColumnName="FormId" />
+                <ScalarProperty Name="RequestTemplate" ColumnName="RequestTemplate" />
+                <ScalarProperty Name="RegixSpravkaId" ColumnName="RegixSpravkaId" />
+                <ScalarProperty Name="idRegixSpravkaInfo" ColumnName="idRegixSpravkaInfo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="pdfGenerationInfoView">
+            <EntityTypeMapping TypeName="dbFormFillModel.pdfGenerationInfoView">
+              <MappingFragment StoreEntitySet="pdfGenerationInfoView">
+                <ScalarProperty Name="t" ColumnName="t" />
+                <ScalarProperty Name="Operation" ColumnName="Operation" />
+                <ScalarProperty Name="FormId" ColumnName="FormId" />
+                <ScalarProperty Name="RequestTemplate" ColumnName="RequestTemplate" />
+                <ScalarProperty Name="RegixSpravkaId" ColumnName="RegixSpravkaId" />
+                <ScalarProperty Name="idRegixSpravkaInfo" ColumnName="idRegixSpravkaInfo" />
+                <ScalarProperty Name="IdAutoFill" ColumnName="IdAutoFill" />
+                <ScalarProperty Name="PersonId" ColumnName="PersonId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
