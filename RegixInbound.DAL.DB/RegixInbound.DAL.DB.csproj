@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Update="RegixInboundDbSet.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>RegixInboundDbSet.xsd</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="RegixInboundDbSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>RegixInboundDbSet.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+</Project>
