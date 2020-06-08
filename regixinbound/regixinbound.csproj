@@ -83,6 +83,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\RegiXEntryPointProduction\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Regix\PdfAutoFillManager.cs" />
     <Compile Include="Regix\RegixCallTemplate.cs" />
     <Compile Include="Regix\RegixEntryPointManager.cs" />
@@ -97,6 +102,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="Connected Services\RegiXEntryPointProduction\RegiXEntryPoint.wsdl" />
+    <None Include="Connected Services\RegiXEntryPointProduction\regixinbound.RegiXEntryPointProduction.ServiceExecuteResult.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\RegiXEntryPointProduction\regixinbound.RegiXEntryPointProduction.ServiceResultData.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\RegixServiceReference\RegiXEntryPoint.wsdl" />
     <None Include="Connected Services\RegixServiceReference\regixinbound.RegixServiceReference.ServiceExecuteResult.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -111,6 +124,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\RegiXEntryPointProduction\" />
     <WCFMetadataStorage Include="Connected Services\RegixServiceReference\" />
   </ItemGroup>
   <ItemGroup>
@@ -145,6 +159,18 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\RegiXEntryPointProduction\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\RegiXEntryPointProduction\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\RegiXEntryPointProduction\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

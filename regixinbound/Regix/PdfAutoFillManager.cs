@@ -1,6 +1,7 @@
 ﻿using Aspose.Pdf;
 using Aspose.Pdf.Forms;
-using regixinbound.RegixServiceReference;
+using devRegix = regixinbound.RegixServiceReference;
+using prodRegix = regixinbound.RegiXEntryPointProduction;
 using RegixInbound.DAL.B;
 using System;
 using System.Collections.Generic;
@@ -30,14 +31,14 @@ namespace regixinbound.Regix
             }
         }
 
-        public void AutoFillForm()
+        public void AutoFillForm(bool isProduction)
         {
             //var allFormsForPopulating = entities.tblAutoFillForms.Where(d => d.IdAutoFill==41 ).ToList();
             var allFormsForPopulating = entities.tblAutoFillForms.Where(d => d.FormData != null && d.DateFormFill == null).ToList();
             foreach (var selectedForm in allFormsForPopulating)
             {
 
-                var endpointData = GetDataFromEndpoint(selectedForm.IdAutoFill, selectedForm.PersonId);
+                var endpointData = GetDataFromEndpoint(selectedForm.IdAutoFill, selectedForm.PersonId, isProduction);
 
                 /* prepeare the form and start filling */
                 var path = SaveFileFromBlob(selectedForm);
@@ -50,7 +51,7 @@ namespace regixinbound.Regix
                     doc.Save();
                 }
 
-               SaveBlobFromFile(selectedForm.IdAutoFill, path);
+               //SaveBlobFromFile(selectedForm.IdAutoFill, path);
 
             } 
         }
@@ -106,7 +107,7 @@ namespace regixinbound.Regix
             }
         }
 
-        private Dictionary<string, XmlElement> GetDataFromEndpoint(int autofillFormId, string egn)
+        private Dictionary<string, XmlElement> GetDataFromEndpoint(int autofillFormId, string egn, bool isProduction)
         {
             var results = new Dictionary<string, XmlElement>();
             var endpointsPerFormId = entities.pdfGenerationInfoView.Where(d => d.IdAutoFill == autofillFormId).ToList();
@@ -114,13 +115,24 @@ namespace regixinbound.Regix
             foreach (var selectedEndpoint in endpointsPerFormId)
             {
                 var requestBuilder = new RequestBuilder(selectedEndpoint.RequestTemplate, selectedEndpoint.Operation);               
-                requestBuilder.PopulateField(selectedEndpoint.t);
+                requestBuilder.PopulateField(selectedEndpoint.t);           
 
-                var request = requestBuilder.BuildRequest();
-                RegiXEntryPointClient client = new RegiXEntryPointClient();
-                var response = client.ExecuteSynchronous(request);
-
-                var data = response.Data.Response.Any;
+                XmlElement data;
+                if (isProduction)
+                {
+                    var request = requestBuilder.BuildRequestProd();
+                    prodRegix.RegiXEntryPointClient Prodclient = new prodRegix.RegiXEntryPointClient();
+                    var response = Prodclient.ExecuteSynchronous(request);
+                    data = response.Data.Response.Any;
+                }
+                else
+                {
+                    var request = requestBuilder.BuildRequest();
+                    devRegix.RegiXEntryPointClient client = new devRegix.RegiXEntryPointClient();
+                    var response = client.ExecuteSynchronous(request);
+                    data = response.Data.Response.Any;
+                } 
+              
                 results.Add(selectedEndpoint.RegixSpravkaId, data);
             }
 
@@ -168,7 +180,9 @@ namespace regixinbound.Regix
 
     public class RequestBuilder
     {
-        ServiceRequestData request = new ServiceRequestData();
+        devRegix.ServiceRequestData request = new devRegix.ServiceRequestData();
+       
+
         private string requestTemplate;
         private readonly string operation;
         public RequestBuilder(string requestTemplate, string operation)
@@ -182,7 +196,21 @@ namespace regixinbound.Regix
             requestTemplate = requestTemplate.Replace($"$payload$", $"{value}");
         }
 
-        public ServiceRequestData BuildRequest()
+        public prodRegix.ServiceRequestData BuildRequestProd()
+        {
+            var prodRequest = new prodRegix.ServiceRequestData();
+
+            prodRequest.Operation = operation;
+            XmlDocument doc = new XmlDocument();
+            doc.LoadXml(requestTemplate);
+            prodRequest.Argument = doc.DocumentElement;
+            prodRequest.ReturnAccessMatrix = false;
+            prodRequest.SignResult = true;
+
+            return prodRequest;
+        }
+
+        public devRegix.ServiceRequestData BuildRequest()
         {
             request.Operation = operation;
             XmlDocument doc = new XmlDocument();

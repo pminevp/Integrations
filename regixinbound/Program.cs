@@ -4,6 +4,7 @@ using regixinbound.RegixServiceReference;
 using RegixInbound.DAL.B;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,7 @@ namespace regixinbound
     {
         static void Main(string[] args)
         {
+            var isProduction = bool.Parse(ConfigurationSettings.AppSettings["isProduction"]);
             var path = AppDomain.CurrentDomain.BaseDirectory;
             var manager = new PdfAutoFillManager(path);
             var  timestart= System.DateTime.Now;
@@ -24,7 +26,7 @@ namespace regixinbound
           
             while (DateTime.Now.Ticks < timeEnd.Ticks)
             {
-                manager.AutoFillForm();
+                manager.AutoFillForm(isProduction);
             }
 
             

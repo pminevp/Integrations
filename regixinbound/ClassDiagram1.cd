@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="regixinbound.RegiXEntryPointProduction.ServiceRequestData" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgCBAAICAAAARAAAgAAAEABAwAAgAAAAIAkAAAECQAA=</HashCode>
+      <FileName>Connected Services\RegiXEntryPointProduction\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="regixinbound.RegiXEntryPointProduction.CallContext" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAMAYECAAQAYAAAAAEAAAAihACCAAIAAAAAAQACEQA=</HashCode>
+      <FileName>Connected Services\RegiXEntryPointProduction\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="regixinbound.RegiXEntryPointProduction.AMPropertyType" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAIAAACAAAAAAAAAIAAAAQAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Connected Services\RegiXEntryPointProduction\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="regixinbound.RegiXEntryPointProduction.AccessMatrixType" Collapsed="true">
+    <Position X="3.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAIAAACAAAAAAAAEIAAAAQAgAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Connected Services\RegiXEntryPointProduction\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="regixinbound.RegiXEntryPointProduction.ResponseContainer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAQAAACAAAAAAAAAAAAAAAAgAAAACAAAAAAAAAAAgA=</HashCode>
+      <FileName>Connected Services\RegiXEntryPointProduction\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="regixinbound.RegiXEntryPointProduction.RequestContainer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAQAAACAAAAAAAAAAAAAAAAgAAAACAAAAAAAAAAAgA=</HashCode>
+      <FileName>Connected Services\RegiXEntryPointProduction\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="regixinbound.RegiXEntryPointProduction.DataContainer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAACAEBAAAAAAAAAAAAAgQAggCAAAAAAAAAAAgA=</HashCode>
+      <FileName>Connected Services\RegiXEntryPointProduction\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="regixinbound.RegiXEntryPointProduction.DataContainerMatrix" Collapsed="true">
+    <Position X="3.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAgA=</HashCode>
+      <FileName>Connected Services\RegiXEntryPointProduction\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="regixinbound.RegiXEntryPointProduction.ServiceResultData" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAEAAAQIAAAAAgEAAgAAAABAICAAAAAAAIAE=</HashCode>
+      <FileName>Connected Services\RegiXEntryPointProduction\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="regixinbound.RegiXEntryPointProduction.ServiceCheckResultArgument" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="9.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAgAAAAgAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Connected Services\RegiXEntryPointProduction\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="regixinbound.RegiXEntryPointProduction.ServiceExecuteResult" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAEAAAQIAAAAgAAAAgAAQAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Connected Services\RegiXEntryPointProduction\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="regixinbound.RegiXEntryPointProduction.RegiXEntryPointClient" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAEAAAABQAAAACAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Connected Services\RegiXEntryPointProduction\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="regixinbound.RegixServiceReference.ServiceRequestData" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="7.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgCBAAICAAAARAAAgAAAEABAwAAgAAAAIAkAAAECQAA=</HashCode>
+      <FileName>Connected Services\RegixServiceReference\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="regixinbound.RegixServiceReference.CallContext" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAMAYECAAQAYAAAAAEAAAAihACCAAIAAAAAAQACEQA=</HashCode>
+      <FileName>Connected Services\RegixServiceReference\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="regixinbound.RegixServiceReference.AMPropertyType" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAIAAACAAAAAAAAAIAAAAQAgAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Connected Services\RegixServiceReference\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="regixinbound.RegixServiceReference.AccessMatrixType" Collapsed="true">
+    <Position X="3.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAIAAACAAAAAAAAEIAAAAQAgAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Connected Services\RegixServiceReference\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="regixinbound.RegixServiceReference.ResponseContainer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAQAAACAAAAAAAAAAAAAAAAgAAAACAAAAAAAAAAAgA=</HashCode>
+      <FileName>Connected Services\RegixServiceReference\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="regixinbound.RegixServiceReference.RequestContainer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAQAAACAAAAAAAAAAAAAAAAgAAAACAAAAAAAAAAAgA=</HashCode>
+      <FileName>Connected Services\RegixServiceReference\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="regixinbound.RegixServiceReference.DataContainer" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAACAEBAAAAAAAAAAAAAgQAggCAAAAAAAAAAAgA=</HashCode>
+      <FileName>Connected Services\RegixServiceReference\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="regixinbound.RegixServiceReference.DataContainerMatrix" Collapsed="true">
+    <Position X="3.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAgA=</HashCode>
+      <FileName>Connected Services\RegixServiceReference\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="regixinbound.RegixServiceReference.ServiceResultData" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAEAAAQIAAAAAgEAAgAAAABAICAAAAAAAIAE=</HashCode>
+      <FileName>Connected Services\RegixServiceReference\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="regixinbound.RegixServiceReference.ServiceCheckResultArgument" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="11.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAgAAAAgAAQAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Connected Services\RegixServiceReference\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="regixinbound.RegixServiceReference.ServiceExecuteResult" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="13" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAEAAAQIAAAAgAAAAgAAQAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Connected Services\RegixServiceReference\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="regixinbound.RegixServiceReference.RegiXEntryPointClient" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAEAAAABQAAAACAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Connected Services\RegixServiceReference\Reference.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="regixinbound.Program" Collapsed="true">
+    <Position X="9.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="regixinbound.RegixEntryPointManager" Collapsed="true">
+    <Position X="7.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABCAAAAA=</HashCode>
+      <FileName>Regix\RegixEntryPointManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="regixinbound.Regix.PdfAutoFillManager" Collapsed="true">
+    <Position X="7.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAECAAAAACQAEAAAAAIAAAAAAQEQAAAAAAQAAAA=</HashCode>
+      <FileName>Regix\PdfAutoFillManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="regixinbound.Regix.RequestBuilder" Collapsed="true">
+    <Position X="9.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIAgCAgAAAAAAAAAAAIAABAAA=</HashCode>
+      <FileName>Regix\PdfAutoFillManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="regixinbound.Regix.RegixCallTemplate" Collapsed="true">
+    <Position X="11.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Regix\RegixCallTemplate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="regixinbound.RegiXEntryPointProduction.IRegiXEntryPoint" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAEAAAABQAAAACAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Connected Services\RegiXEntryPointProduction\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="regixinbound.RegiXEntryPointProduction.IRegiXEntryPointChannel" Collapsed="true">
+    <Position X="0.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Connected Services\RegiXEntryPointProduction\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="regixinbound.RegixServiceReference.IRegiXEntryPoint" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAEAAAABQAAAACAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Connected Services\RegixServiceReference\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="regixinbound.RegixServiceReference.IRegiXEntryPointChannel" Collapsed="true">
+    <Position X="0.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Connected Services\RegixServiceReference\Reference.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="regixinbound.Regix.RequestKeys" Collapsed="true">
+    <Position X="6" Y="5.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>Regix\RequestKeys.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
