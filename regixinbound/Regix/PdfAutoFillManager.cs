@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Diagnostics;
 
 namespace regixinbound.Regix
 {
@@ -31,32 +32,64 @@ namespace regixinbound.Regix
             }
         }
 
-        public void AutoFillForm(bool isProduction)
+        public List<string> AutoFillForm(bool isProduction)
         {
+            var logs = new List<string>();
+
+            var sw = new Stopwatch();
+            var logPath = "D:\\AutoFillForms\\";
+            var logName = $"log_{DateTime.Now.ToString("ddMMyyyy")}.log";
+            var logFullPath = logPath + logName;
+            sw.Start();
             //var allFormsForPopulating = entities.tblAutoFillForms.Where(d => d.IdAutoFill==41 ).ToList();
             var allFormsForPopulating = entities.tblAutoFillForms.Where(d => d.FormData != null && d.DateFormFill == null).ToList();
+            // var allFormsForPopulating = entities.tblAutoFillForms.Where(d => d.FormData == null && d.DateFormFill == null).OrderBy(a=>a.DateReg).ToList();
+
+            sw.Stop();
+            //  File.AppendAllText(logFullPath, "\r\n Vreme neohodimo za  vzimane na vsichki formi za populvane: " + sw.ElapsedMilliseconds);
+            if (allFormsForPopulating.Count > 0)
+            {
+                logs.Add($"\r\n ### {DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss")} Vreme neobhodimo za  vzimane na vsichki formi za populvane: " + sw.ElapsedMilliseconds);
+            }
+            sw = new Stopwatch();
+
             foreach (var selectedForm in allFormsForPopulating)
             {
-
+                logs.Add($"\r\n ### {DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss")} obrabotvana forma: " + selectedForm.FormId);
+                sw.Start();
                 var endpointData = GetDataFromEndpoint(selectedForm.IdAutoFill, selectedForm.PersonId, isProduction);
+                sw.Stop();
+                logs.Add($"\r\n ### {DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss")} Vreme za vzimane na Dannite ot service-ite: " + sw.ElapsedMilliseconds);
+                sw = new Stopwatch();
+                sw.Start();
 
                 /* prepeare the form and start filling */
                 var path = SaveFileFromBlob(selectedForm);
                 var formToPdfMapping = entities.tblFieldsDocToRegixFields.Where(d => d.FormId == selectedForm.FormId && d.IsActive == true).ToList();
-
+                sw.Stop();
+                logs.Add($"\r\n ### {DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss")} Vreme neobhodimo za mapvane kum PDF " + sw.ElapsedMilliseconds);
+                sw = new Stopwatch();
+                sw.Start();
                 using (FileStream outFile = new FileStream(path, FileMode.Open))
                 {
                     Document doc = new Document(outFile);
                     PopulatePdfFields(endpointData, formToPdfMapping, doc);
                     doc.Save();
                 }
+                sw.Stop();
+                logs.Add($"\r\n ### {DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss")} Vreme neobhodimo za populvane na temp formata na diska " + sw.ElapsedMilliseconds);
+                sw = new Stopwatch();
+                sw.Start();
+                SaveBlobFromFile(selectedForm.IdAutoFill, path);
+                sw.Stop();
+                logs.Add($"\r\n ### {DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss")} Vreme neobhodimo za zapisvane na BLOB filea " + sw.ElapsedMilliseconds);
 
-               //SaveBlobFromFile(selectedForm.IdAutoFill, path);
+            }
 
-            } 
+            return logs;
         }
 
-        private  void PopulatePdfFields(Dictionary<string, XmlElement> endpointData, List<tblFieldsDocToRegixFields> formToPdfMapping, Document doc)
+        private void PopulatePdfFields(Dictionary<string, XmlElement> endpointData, List<tblFieldsDocToRegixFields> formToPdfMapping, Document doc)
         {
             foreach (var pdfMap in formToPdfMapping)
             {
@@ -114,8 +147,8 @@ namespace regixinbound.Regix
 
             foreach (var selectedEndpoint in endpointsPerFormId)
             {
-                var requestBuilder = new RequestBuilder(selectedEndpoint.RequestTemplate, selectedEndpoint.Operation);               
-                requestBuilder.PopulateField(selectedEndpoint.t);           
+                var requestBuilder = new RequestBuilder(selectedEndpoint.RequestTemplate, selectedEndpoint.Operation);
+                requestBuilder.PopulateField(selectedEndpoint.t);
 
                 XmlElement data;
                 if (isProduction)
@@ -131,21 +164,14 @@ namespace regixinbound.Regix
                     devRegix.RegiXEntryPointClient client = new devRegix.RegiXEntryPointClient();
                     var response = client.ExecuteSynchronous(request);
                     data = response.Data.Response.Any;
-                } 
-              
+                }
+
                 results.Add(selectedEndpoint.RegixSpravkaId, data);
             }
 
             return results;
         }
 
-        private void PopulatePDfForm(tblAutoFillForms selectedForm)
-        {
-            var filePath = SaveFileFromBlob(selectedForm);
-            var allfields = entities.tblFieldsDocToRegixFields.Where(s => s.FormId == selectedForm.FormId).ToList();
-
-
-        }
 
         private string SaveFileFromBlob(tblAutoFillForms selectedForm)
         {
@@ -163,7 +189,7 @@ namespace regixinbound.Regix
             return filePath;
         }
 
-        private void SaveBlobFromFile(int idAutoFillForm,string filePath)
+        private void SaveBlobFromFile(int idAutoFillForm, string filePath)
         {
             var form = entities.tblAutoFillForms.First(s => s.IdAutoFill == idAutoFillForm);
             var fileBytes = File.ReadAllBytes(filePath);
@@ -181,7 +207,7 @@ namespace regixinbound.Regix
     public class RequestBuilder
     {
         devRegix.ServiceRequestData request = new devRegix.ServiceRequestData();
-       
+
 
         private string requestTemplate;
         private readonly string operation;
